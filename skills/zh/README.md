@@ -1,0 +1,297 @@
+<div align="right"><strong>🇨🇳 中文</strong> | <a href="../en/README.md">🇬🇧 English</a></div>
+
+# 中文 Skills
+
+本目录是中文主语言 Skill 根目录，与 `skills/en` 使用相同 Skill 名和物理结构。
+
+每种语言共 **164** 个 Skill：10 workflows + 149 testing types + 5 Skill Engineering。完整项目说明见 [中文 README](../../README.md) 和 [English README](../../README_EN.md)；长期治理见 [治理路线图](../../docs/governance/SKILL_GOVERNANCE_ROADMAP.md) 与 [治理矩阵](../../docs/SKILL_MATRIX.md)。
+
+## 跨阶段工作流
+
+### 需求发现与分析
+
+| Skill | 目录 |
+| --- | --- |
+| Testing Skill Discovery | [`discover-testing`](testing-workflows/discover-testing/) |
+| 产品质量视角 | [`product-quality-perspective`](testing-workflows/product-quality-perspective/) |
+| QA 质量视角 | [`qa-quality-perspective`](testing-workflows/qa-quality-perspective/) |
+| UX 质量视角 | [`ux-quality-perspective`](testing-workflows/ux-quality-perspective/) |
+| 技术质量视角 | [`technical-quality-perspective`](testing-workflows/technical-quality-perspective/) |
+
+### 开发与迭代
+
+| Skill | 目录 |
+| --- | --- |
+| 日常测试工作流程（中文版） | [`daily-testing-workflow`](testing-workflows/daily-testing-workflow/) |
+| 迭代测试工作流程（中文版） | [`sprint-testing-workflow`](testing-workflows/sprint-testing-workflow/) |
+| 项目交付视角 | [`project-delivery-perspective`](testing-workflows/project-delivery-perspective/) |
+
+### 发布与综合
+
+| Skill | 目录 |
+| --- | --- |
+| 发布测试工作流程（中文版） | [`release-testing-workflow`](testing-workflows/release-testing-workflow/) |
+| 多角色质量汇总 | [`multi-role-quality-synthesis`](testing-workflows/multi-role-quality-synthesis/) |
+
+## 四层能力体系 × 研发测试阶段
+
+### Core QA Skills — 基础质量能力
+
+#### 需求发现与分析
+
+| Skill | 目录 |
+| --- | --- |
+| 需求分析（中文版） | [`requirements-analysis`](testing-types/requirements-analysis/) |
+| 需求分析加强版 | [`requirements-analysis-plus`](testing-types/requirements-analysis-plus/) |
+
+#### 方案设计与测试策略
+
+| Skill | 目录 |
+| --- | --- |
+| 测试策略（中文版） | [`test-strategy`](testing-types/test-strategy/) |
+| 测试策略加强版 | [`test-strategy-plus`](testing-types/test-strategy-plus/) |
+| 测试策略评审 | [`test-strategy-review`](testing-types/test-strategy-review/) |
+
+#### 测试设计与准备
+
+| Skill | 目录 |
+| --- | --- |
+| 测试用例编写（中文版） | [`test-case-writing`](testing-types/test-case-writing/) |
+| 测试用例编写加强版 | [`testcase-writer-plus`](testing-types/testcase-writer-plus/) |
+| 测试用例评审（中文版） | [`test-case-reviewer`](testing-types/test-case-reviewer/) |
+| 测试用例评审加强版 | [`test-case-reviewer-plus`](testing-types/test-case-reviewer-plus/) |
+| 决策表测试 | [`decision-table-testing`](testing-types/decision-table-testing/) |
+| 状态迁移测试 | [`state-transition-testing`](testing-types/state-transition-testing/) |
+| 边界值测试 | [`boundary-value-testing`](testing-types/boundary-value-testing/) |
+| 等价类划分 | [`equivalence-partitioning`](testing-types/equivalence-partitioning/) |
+| 成对组合测试 | [`pairwise-testing`](testing-types/pairwise-testing/) |
+| 组合测试 | [`combinatorial-testing`](testing-types/combinatorial-testing/) |
+| 基于模型测试 | [`model-based-testing`](testing-types/model-based-testing/) |
+| 基于属性测试 | [`property-based-testing`](testing-types/property-based-testing/) |
+| 变形测试 | [`metamorphic-testing`](testing-types/metamorphic-testing/) |
+
+#### 测试执行与分析
+
+| Skill | 目录 |
+| --- | --- |
+| 功能测试（中文版） | [`functional-testing`](testing-types/functional-testing/) |
+| API 测试（中文版） | [`api-testing`](testing-types/api-testing/) |
+| 手动/探索性测试（中文版） | [`manual-testing`](testing-types/manual-testing/) |
+| 移动端测试（中文版） | [`mobile-testing`](testing-types/mobile-testing/) |
+| 可访问性测试（中文版） | [`accessibility-testing`](testing-types/accessibility-testing/) |
+| 安全测试（中文版） | [`security-testing`](testing-types/security-testing/) |
+
+#### 发布、缺陷与报告
+
+| Skill | 目录 |
+| --- | --- |
+| 缺陷上报（中文版） | [`bug-reporting`](testing-types/bug-reporting/) |
+| 测试报告（中文版） | [`test-reporting`](testing-types/test-reporting/) |
+| 测试报告评审 | [`test-report-review`](testing-types/test-report-review/) |
+
+### Engineering QA Skills — 质量工程能力
+
+#### 需求与质量左移
+
+| Skill | 目录 |
+| --- | --- |
+| 验收标准评审 | [`acceptance-criteria-review`](testing-types/acceptance-criteria-review/) |
+| 需求缺口分析 | [`requirement-gap-analysis`](testing-types/requirement-gap-analysis/) |
+| 质量风险分析 | [`quality-risk-analysis`](testing-types/quality-risk-analysis/) |
+| 可测试性分析 | [`testability-analysis`](testing-types/testability-analysis/) |
+| 需求质量评审 | [`requirement-quality-review`](testing-types/requirement-quality-review/) |
+| 需求歧义分析 | [`requirement-ambiguity-analysis`](testing-types/requirement-ambiguity-analysis/) |
+| 需求一致性分析 | [`requirement-consistency-analysis`](testing-types/requirement-consistency-analysis/) |
+| 需求冲突检测 | [`requirement-conflict-detection`](testing-types/requirement-conflict-detection/) |
+| 需求可追踪性分析 | [`requirement-traceability-analysis`](testing-types/requirement-traceability-analysis/) |
+| 业务规则提取 | [`business-rule-extraction`](testing-types/business-rule-extraction/) |
+| 技术设计质量评审 | [`technical-design-quality-review`](testing-types/technical-design-quality-review/) |
+| API 设计质量评审 | [`api-design-quality-review`](testing-types/api-design-quality-review/) |
+| 数据库设计质量评审 | [`database-design-quality-review`](testing-types/database-design-quality-review/) |
+| 可观测性设计评审 | [`observability-design-review`](testing-types/observability-design-review/) |
+| 错误处理设计评审 | [`error-handling-design-review`](testing-types/error-handling-design-review/) |
+| 测试范围分析 | [`test-scope-analysis`](testing-types/test-scope-analysis/) |
+| 测试缺口分析 | [`test-gap-analysis`](testing-types/test-gap-analysis/) |
+| 基于风险的测试 | [`risk-based-testing`](testing-types/risk-based-testing/) |
+| 边界场景发现 | [`edge-case-discovery`](testing-types/edge-case-discovery/) |
+| 负向场景发现 | [`negative-scenario-discovery`](testing-types/negative-scenario-discovery/) |
+
+#### Reliability and Security — 可靠性与安全
+
+| Skill | 目录 |
+| --- | --- |
+| 可靠性测试 | [`reliability-testing`](testing-types/reliability-testing/) |
+| 韧性测试 | [`resilience-testing`](testing-types/resilience-testing/) |
+| 混沌测试 | [`chaos-testing`](testing-types/chaos-testing/) |
+| 故障切换测试 | [`failover-testing`](testing-types/failover-testing/) |
+| 恢复测试 | [`recovery-testing`](testing-types/recovery-testing/) |
+| 重试测试 | [`retry-testing`](testing-types/retry-testing/) |
+| 超时测试 | [`timeout-testing`](testing-types/timeout-testing/) |
+| 熔断器测试 | [`circuit-breaker-testing`](testing-types/circuit-breaker-testing/) |
+| 依赖故障测试 | [`dependency-failure-testing`](testing-types/dependency-failure-testing/) |
+| 灾备测试 | [`disaster-recovery-testing`](testing-types/disaster-recovery-testing/) |
+| 身份认证测试 | [`authentication-testing`](testing-types/authentication-testing/) |
+| 授权测试 | [`authorization-testing`](testing-types/authorization-testing/) |
+| 会话安全测试 | [`session-security-testing`](testing-types/session-security-testing/) |
+| API 安全测试 | [`api-security-testing`](testing-types/api-security-testing/) |
+| 安全需求审查 | [`security-requirement-review`](testing-types/security-requirement-review/) |
+| 威胁建模 | [`threat-modeling`](testing-types/threat-modeling/) |
+| 敏感信息暴露审查 | [`secrets-exposure-review`](testing-types/secrets-exposure-review/) |
+
+#### 质量工程与效能
+
+| Skill | 目录 |
+| --- | --- |
+| 质量门禁设计 | [`quality-gate-design`](testing-types/quality-gate-design/) |
+| 质量指标设计 | [`quality-metrics-design`](testing-types/quality-metrics-design/) |
+| 质量仪表盘设计 | [`quality-dashboard-design`](testing-types/quality-dashboard-design/) |
+| 质量债务分析 | [`quality-debt-analysis`](testing-types/quality-debt-analysis/) |
+| 质量成熟度评估 | [`quality-maturity-assessment`](testing-types/quality-maturity-assessment/) |
+| 测试有效性分析 | [`test-effectiveness-analysis`](testing-types/test-effectiveness-analysis/) |
+| 自动化投资回报分析 | [`automation-roi-analysis`](testing-types/automation-roi-analysis/) |
+| 测试瓶颈分析 | [`testing-bottleneck-analysis`](testing-types/testing-bottleneck-analysis/) |
+| 回归优化 | [`regression-optimization`](testing-types/regression-optimization/) |
+| CI 测试优化 | [`ci-test-optimization`](testing-types/ci-test-optimization/) |
+| 测试运行时间优化 | [`test-runtime-optimization`](testing-types/test-runtime-optimization/) |
+| 测试维护成本分析 | [`test-maintenance-cost-analysis`](testing-types/test-maintenance-cost-analysis/) |
+| 质量生产力指标 | [`quality-productivity-metrics`](testing-types/quality-productivity-metrics/) |
+
+#### 开发与持续集成
+
+| Skill | 目录 |
+| --- | --- |
+| 代码审查（中文版） | [`code-review`](testing-types/code-review/) |
+| 变更影响分析 | [`change-impact-analysis`](testing-types/change-impact-analysis/) |
+| PR 测试影响分析 | [`pr-test-impact-analysis`](testing-types/pr-test-impact-analysis/) |
+| API 契约测试 | [`api-contract-testing`](testing-types/api-contract-testing/) |
+| 自动化测试（中文版） | [`automation-testing`](testing-types/automation-testing/) |
+| API Schema 校验 | [`api-schema-validation`](testing-types/api-schema-validation/) |
+| API 负向测试 | [`api-negative-testing`](testing-types/api-negative-testing/) |
+| API 幂等性测试 | [`api-idempotency-testing`](testing-types/api-idempotency-testing/) |
+| API 分页测试 | [`api-pagination-testing`](testing-types/api-pagination-testing/) |
+| API 限流测试 | [`api-rate-limit-testing`](testing-types/api-rate-limit-testing/) |
+| API 版本兼容性测试 | [`api-version-compatibility-testing`](testing-types/api-version-compatibility-testing/) |
+| API 错误契约测试 | [`api-error-contract-testing`](testing-types/api-error-contract-testing/) |
+
+#### 测试数据与自动化实现
+
+| Skill | 目录 |
+| --- | --- |
+| 测试数据需求分析 | [`test-data-requirement-analysis`](testing-types/test-data-requirement-analysis/) |
+| 测试数据生成 | [`test-data-generation`](testing-types/test-data-generation/) |
+| Bruno 接口自动化 | [`api-test-bruno`](testing-types/api-test-bruno/) |
+| Postman API 测试 | [`api-test-postman`](testing-types/api-test-postman/) |
+| Pytest 接口自动化 | [`api-test-pytest`](testing-types/api-test-pytest/) |
+| RestAssured 接口自动化 | [`api-test-restassure`](testing-types/api-test-restassure/) |
+| Supertest 接口自动化 | [`api-test-supertest`](testing-types/api-test-supertest/) |
+| Selenium UI 自动化测试 | [`ui-test-selenium`](testing-types/ui-test-selenium/) |
+| Playwright UI 自动化测试 | [`ui-test-playwright`](testing-types/ui-test-playwright/) |
+| TestCafe UI 自动化测试 | [`ui-test-testcafe`](testing-types/ui-test-testcafe/) |
+| Cypress UI 自动化测试 | [`ui-test-cypress`](testing-types/ui-test-cypress/) |
+| Puppeteer UI 自动化测试 | [`ui-test-puppeteer`](testing-types/ui-test-puppeteer/) |
+| WebdriverIO UI 自动化测试 | [`ui-test-webdriverio`](testing-types/ui-test-webdriverio/) |
+| UI 测试策略 | [`ui-test-strategy`](testing-types/ui-test-strategy/) |
+| UI 测试选择器评审 | [`ui-test-selector-review`](testing-types/ui-test-selector-review/) |
+| UI 测试等待策略评审 | [`ui-test-wait-strategy-review`](testing-types/ui-test-wait-strategy-review/) |
+| 视觉回归测试 | [`visual-regression-testing`](testing-types/visual-regression-testing/) |
+| 跨浏览器测试 | [`cross-browser-testing`](testing-types/cross-browser-testing/) |
+
+#### 测试执行与回归智能
+
+| Skill | 目录 |
+| --- | --- |
+| 不稳定测试分析 | [`flaky-test-analysis`](testing-types/flaky-test-analysis/) |
+| 回归范围分析 | [`regression-scope-analysis`](testing-types/regression-scope-analysis/) |
+| 回归测试选择 | [`regression-test-selection`](testing-types/regression-test-selection/) |
+| AI 辅助测试（中文版） | [`ai-assisted-testing`](testing-types/ai-assisted-testing/) |
+| AI 生成测试评审 | [`ai-generated-test-review`](testing-types/ai-generated-test-review/) |
+| 测试代码评审 | [`test-code-review`](testing-types/test-code-review/) |
+| 变异测试分析 | [`mutation-testing-analysis`](testing-types/mutation-testing-analysis/) |
+| Mock 质量评审 | [`mock-quality-review`](testing-types/mock-quality-review/) |
+| 测试套件健康度分析 | [`test-suite-health-analysis`](testing-types/test-suite-health-analysis/) |
+
+#### 性能工程与容量决策
+
+| Skill | 目录 |
+| --- | --- |
+| 性能测试（中文版） | [`performance-testing`](testing-types/performance-testing/) |
+| k6 性能测试 | [`performance-test-k6`](testing-types/performance-test-k6/) |
+| Gatling 性能测试 | [`performance-test-gatling`](testing-types/performance-test-gatling/) |
+| JMeter 性能测试 | [`performance-test-jmeter`](testing-types/performance-test-jmeter/) |
+| 性能负载建模 | [`performance-workload-modeling`](testing-types/performance-workload-modeling/) |
+| 性能结果分析 | [`performance-result-analysis`](testing-types/performance-result-analysis/) |
+| 性能瓶颈分析 | [`performance-bottleneck-analysis`](testing-types/performance-bottleneck-analysis/) |
+| 性能回归分析 | [`performance-regression-analysis`](testing-types/performance-regression-analysis/) |
+| 容量规划分析 | [`capacity-planning-analysis`](testing-types/capacity-planning-analysis/) |
+
+#### 复盘与持续改进
+
+| Skill | 目录 |
+| --- | --- |
+| 根因分析 | [`root-cause-analysis`](testing-types/root-cause-analysis/) |
+| 日志分析 | [`log-analysis`](testing-types/log-analysis/) |
+
+### Production Quality Skills — 生产质量能力
+
+#### 发布与生产验证
+
+| Skill | 目录 |
+| --- | --- |
+| 生产验证 | [`production-verification`](testing-types/production-verification/) |
+
+#### 生产运行与事故响应
+
+| Skill | 目录 |
+| --- | --- |
+| 生产事故分析 | [`production-incident-analysis`](testing-types/production-incident-analysis/) |
+| 分布式 Trace 分析 | [`distributed-trace-analysis`](testing-types/distributed-trace-analysis/) |
+| 指标异常分析 | [`metrics-anomaly-analysis`](testing-types/metrics-anomaly-analysis/) |
+
+### AI Native QA Skills — AI 原生质量能力
+
+#### AI 功能需求与风险
+
+| Skill | 目录 |
+| --- | --- |
+| AI 功能测试 | [`ai-feature-testing`](testing-types/ai-feature-testing/) |
+
+#### LLM 与 Prompt 评测设计
+
+| Skill | 目录 |
+| --- | --- |
+| LLM Eval 设计 | [`llm-evaluation-design`](testing-types/llm-evaluation-design/) |
+| LLM 测试 | [`llm-testing`](testing-types/llm-testing/) |
+| Prompt 测试 | [`prompt-testing`](testing-types/prompt-testing/) |
+| RAG 质量测试 | [`rag-quality-testing`](testing-types/rag-quality-testing/) |
+| RAG 检索测试 | [`rag-retrieval-testing`](testing-types/rag-retrieval-testing/) |
+| LLM 幻觉测试 | [`llm-hallucination-testing`](testing-types/llm-hallucination-testing/) |
+| LLM 一致性测试 | [`llm-consistency-testing`](testing-types/llm-consistency-testing/) |
+
+> `prompt-regression-testing` 是 `prompt-testing` 内名为 `prompt-regression` 的增强模式，不创建别名目录。
+
+#### Agent、工具与安全测试
+
+| Skill | 目录 |
+| --- | --- |
+| AI Agent 测试 | [`ai-agent-testing`](testing-types/ai-agent-testing/) |
+| Agent 工具调用测试 | [`agent-tool-testing`](testing-types/agent-tool-testing/) |
+| Prompt Injection 测试 | [`prompt-injection-testing`](testing-types/prompt-injection-testing/) |
+| Agent 循环测试 | [`agent-loop-testing`](testing-types/agent-loop-testing/) |
+| Agent 记忆测试 | [`agent-memory-testing`](testing-types/agent-memory-testing/) |
+| Agent 权限测试 | [`agent-permission-testing`](testing-types/agent-permission-testing/) |
+| Agent 故障恢复测试 | [`agent-failure-recovery-testing`](testing-types/agent-failure-recovery-testing/) |
+| 长运行 Agent 测试 | [`agent-long-running-testing`](testing-types/agent-long-running-testing/) |
+| 多 Agent 测试 | [`multi-agent-testing`](testing-types/multi-agent-testing/) |
+| AI 安全测试 | [`ai-safety-testing`](testing-types/ai-safety-testing/) |
+
+## Skill Engineering（横向治理）
+
+| Skill | 目录 |
+| --- | --- |
+| Skill 变更验证 | [`skill-change-verification`](skill-engineering/skill-change-verification/) |
+| Skill 质量审查 | [`skill-quality-review`](skill-engineering/skill-quality-review/) |
+| Skill 评测 | [`skill-evaluation`](skill-engineering/skill-evaluation/) |
+| Skill 文案契约审查 | [`skill-prose-review`](skill-engineering/skill-prose-review/) |
+| 过程性文案清理 | [`skill-prose-trim`](skill-engineering/skill-prose-trim/) |
+
+物理目录不随逻辑分类变化。完整双语索引见 [skills-index.md](../../skills-index.md)。

@@ -1,0 +1,68 @@
+<div align="right"><strong>🇨🇳 中文</strong> | <a href="./SKILL_GOVERNANCE_ROADMAP_EN.md">🇬🇧 English</a></div>
+
+# Skill 治理与长期路线图
+
+> 本文是后续治理的上下文入口。既有 `QA_SKILLS_EVOLUTION_ROADMAP.md` 保留已完成版本的历史记录；两者不互相覆盖。
+
+## 治理原则
+
+坚持“先匹配，后增强；先合并，后新增”。稳定物理目录负责兼容性；虚拟 Domain、Matrix、metadata、Workflow 和文档负责发现与治理。
+
+## 执行顺序
+
+1. Phase 0：Inventory、16 个虚拟 Domain、Matching、Lifecycle、Quality Score、最低 Eval 与矩阵。
+2. Phase 1：Shift-Left Quality，候选项先通过 Match 后再决定 New/Enhance/Merge。
+3. Phase 2：Test Engineering，分离测试方法论与框架/工具 Adapter。
+4. Phase 3：Reliability、安全、QE 效能与 AI Native Quality，并复核 Performance 和 AI 既有能力。
+
+## Project 与文档同步
+
+GitHub Project `Awesome QA Skills — Governance & Roadmap` 是执行看板。每张卡必须含目标、范围、非目标、依赖、交付物、验收与关联文档；卡片状态不等同于发布或风险接受。
+
+每次状态变化同步检查：`SKILL_MATRIX.md`、中英文入口 README、Catalog/Graph、Workflow、Eval、`agents/openai.yaml`、安装与贡献文档。未适用项显式标记 `N/A`。
+
+## v1.5 已收口（2026-09-20）
+
+`Done`：`v1.5｜迭代｜Skills CLI / Agent Skills Ecosystem Integration` Project 卡已完成，覆盖附件 `awesome-qa-skills-skills-cli-integration-pack (1)` 的 15 份文档：架构与 ADR、可移植兼容契约、仓库变更、CLI 分发、CI 质量门禁、作者体验、迁移、测试、回滚与风险、DoD、实施 Epic A–H、最终目录和 README 变更规范。附件原本提出的 Iteration 0–7、PR slicing、Later 和 Optional 仅作为来源建议；本次按用户要求合并为一个 v1.5 迭代，不再为该集成拆出多个后续迭代卡。
+
+新增 v1.5 后，Project 中原有目标版本按一次顺延处理：原 `v1.5` → `v1.6`、原 `v1.6` → `v1.7`、原 `v1.7` → `v1.8`、原 `v1.8` → `v1.9`。原卡片的主题、优先级和当前状态保留；新卡创建时初始为 `Todo` / `P1` / `v1.5`。这一排期调整不改变 v1.4 历史收口证据，也不把 Project 状态当作发布批准或运行效果证明。
+
+开发与收口已完成（2026-09-20）：该 v1.5 卡当前为 `Done` / `P1` / `v1.5`；顺延后的既有卡片仍保持各自原状态。
+
+## v1.5.1 当前工作项（2026-09-20）
+
+`Done`：新增并完成 `v1.5.1｜迭代｜Skill Evaluation Quality Loop` Project 卡，依据 [Skill Evaluation Design](./SKILL_EVALUATION_DESIGN.md)、[Evaluation Contract](./SKILL_EVALUATION_CONTRACT.md) 与 [Pilot Record](./SKILL_EVALUATION_PILOTS.md) 落地 Skill Engineering Quality Loop。交付包括双语 `skill-quality-review` 与 `skill-evaluation` Meta Skills、证据元数据与状态契约、失败分类、回归用例写入器、`requirements-analysis` / `ui-test-playwright` pilot 记录，以及质量门禁与治理视图同步。
+
+本迭代保持 `skill-up` 为唯一通用 Eval Engine，不新增第二套通用 Eval、Judge、Benchmark 或 Quality Score。静态、结构、评测、运行时和人工复核证据分开记录；未授权真实模型回放、trigger selection 观察、外部目标执行和业务验收仍保持 `NOT_RUN` / `INSUFFICIENT_EVIDENCE`，不由 Project `Done` 状态推断。
+
+## v1.5.2 当前工作项（2026-09-20）
+
+`Done with deferred evidence`：`v1.5.2｜迭代｜Skill Router 与 Evaluation Pilot Hardening` 已将已有 `discover-testing`、Composition 图和 v1.5.1 评测基础连接为一个最小的可发现、可验证、可回归闭环。当前实现包含受验证的 `skill-composition.yaml`、双语生成 Catalog、可独立复制的 Router `reference.md`、五条结构化路线（新功能质量准备、API 交付、变更与回归、性能决策、AI 功能验证）以及 Router Pilot 的双语 Eval/trace 合同。
+
+本工作项不新增物理 Skill，不把 Composition 变成安装依赖，不实现服务端语义路由、自动目标执行、多 Agent 编排，也不新增通用 Eval Engine、Judge、Benchmark runner 或 Quality Score。质量门禁能够验证 Manifest、生成视图、双语结构、`skill.selection` 离线证据和缺失选择时的 `BLOCKED` 边界；真实模型选择、跨模型一致性、目标运行、真实项目 Benchmark、Usage Analytics 和业务路由效果继续保持 `NOT_RUN` / `BLOCKED` / `INSUFFICIENT_EVIDENCE`。`xxx-plus` 到 mode 的迁移留待后续版本。
+
+## v1.6 当前工作项（2026-09-22）
+
+`ACCEPTED_WITH_LIMITATIONS`：v1.6 的四张 Project #4 Match Review 卡（`capacity-planning`、`workload-modeling`、`requirement-change-impact-analysis`、`quality-risk-identification`）已完成项目上下文复核、双语目标 Eval、Registry/Matrix/Matching Register 同步和质量门禁。四条记录继续复用既有目标 Skill，不创建重复目录；固定项目证据为 `naodeng/dsh-qa@6d650cae72be8fc582bc4f47d6ba48e3fc28157d`，详见 [v1.6 Phase 1 项目上下文复核](./PHASE_1_MATCH_REVIEW.md)。
+
+本版本新增 8 个项目上下文 Eval 用例（4 个目标 Skill × 中英文），并保持 `skill-up` 为唯一通用 Eval Engine。静态项目输入、Eval 输出和 Project `Done` 不能证明 Prompt 语义等价、生产运行效果、真实模型一致性、外部目标执行或业务验收；这些状态继续分别保持 `UNASSESSED` / `NOT_RUN` / `NOT_SCORED` / `INCOMPLETE`，除非有对应证据。后续若出现能力差异，应在现有目标 Skill 上开 enhancement/implementation card，不因 Match Review 创建平行目录。
+
+## Phase 0 当前状态（2026-09-16）
+
+`COMPLETED_WITH_LIMITATIONS`：registry 当前逐条覆盖 164 个逻辑双语 Skill 对；每条保留中英文 `SKILL.md`、主 prompt、Eval 结构和 `agents/openai.yaml` 的证据路径，D01–D16 分类源以及 Matrix/Register 均由生成器复现并受质量门禁检查。当前登记 100 个候选条目，每条保留六项证据字段；其中 Phase 0 Prompt Baseline 继续固定在 `554178fe9b93d851ec01388597ceb7996d22bd1c` 的 `awesome-qa-prompt` 提交（详见 [Phase 0 来源登记](./PHASE_0_PROMPT_BASELINE_SOURCES.md)）。候选结论保留 `MATCH` / `MERGE` / `ENHANCE` / `NEW`，`decision_state` 按阶段保留 `REVIEWED_WITH_LIMITATION` / `REVIEWED` / `PROPOSED`；业务语义等价仍需项目需求、Issue/PR 或测试资产复核，不得据此直接创建或修改 Skill。Phase 0 未执行模型、外部测试目标或真实质量评估，因此 Quality Score / Eval 执行仍为 `NOT_SCORED` / `NOT_RUN`；Prompt 语义等价、运行行为与有效性继续为 `UNASSESSED`。
+
+典型映射复核（2026-09-16）已将 20 条路线图关系写入 Registry 的 `match_reviews`，包括 13 条候选映射和 7 条 Existing 自映射；[双语复核视图](./PHASE_0_MATCH_MERGE_REVIEW.md)与 Matrix/Matching Register 均由生成器产生。该复核只固化关系、目标 Skill、证据路径和后续动作，不授权创建重复目录，也不把静态关系记录升级为语义等价、运行效果、模型评测或发布批准。
+
+v1.4 的 35 张 Project 卡由 [Phase 0 收口视图](./PHASE_0_V1_4_CLOSEOUT.md)统一登记；[Deprecation 契约](./DEPRECATION_DECISION_CONTRACT.md)、[双语一致性契约](./BILINGUAL_CONSISTENCY_CONTRACT.md)、[Quality Score/Eval 契约](./QUALITY_SCORE_EVAL_CONTRACT.md)、[Workflow/Eval/安装同步清单](./WORKFLOW_EVAL_INSTALL_SYNC.md)、[Enhancement Sprint](./ENHANCEMENT_SPRINT.md)、[15 步模板](./CANDIDATE_SKILL_15_STEP_TEMPLATE.md)和 [Shift Left 里程碑](./SHIFT_LEFT_MILESTONE.md)分别保留可执行规则。v1.5–v1.9 的当前排期见上方 Project 同步记录；该历史收口不提前执行后续版本。
+
+## Phase 1 当前工作项（2026-09-14）
+
+`ACCEPTED_WITH_DEFERRED_EVAL`：v1.1 第一批五个需求质量 Skill、后续十个质量 Skill 卡片和本批五个测试设计发现 Skill 已完成统一实现范围验收；对应 20 张 Project #4 卡片移至 `Done`。范围、卡片 ID、输入审计约束、证据边界和验收命令见 [Phase 1 需求质量记录](./PHASE_1_REQUIREMENTS_QUALITY.md)。真实模型 Eval 按用户决定延期并保持 `NOT_RUN`，因此不能据此宣称语义效果、质量评分或版本发布完成。
+
+## Phase 3 当前工作项（2026-09-15）
+
+`ACCEPTED_WITH_DEFERRED_EVAL`：v3-v4 Phase 3 的 Batch 1（Reliability + Security）17 张卡片和 Batch 2（Quality Engineering + AI Native）25 张卡片，其 Match、RED 契约、Skill 实现、治理同步和质量门禁交付物均已完成；Project 当前快照显示 42 张卡片为 `Done`。现有 Project 查询不能证明历史上完整经历过 `In Progress → Done`，因此 transition audit 保持 `UNASSESSED`。Batch 2 交付 24 个双语物理 Skill 包，并将 `prompt-regression-testing` 作为 `prompt-testing` 的增强模式，不创建别名目录。真实模型 Eval、外部目标执行、质量分数和业务验收继续保持 `NOT_RUN` / `NOT_SCORED` / `INCOMPLETE`。详见 [v3-v4 Phase 3 记录](./PHASE_3_V3_V4.md)。
+
+## 阶段复盘
+
+每期执行 Coverage、Duplicate、Match、Merge、Enhancement、Eval、Usage 与 Maintenance Review；Review 结论区分已验证、失败、未运行、阻塞和不适用，不能把静态检查写成运行效果。

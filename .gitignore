@@ -1,0 +1,115 @@
+# This repository contains source Skills, documentation, templates, and
+# runnable examples. Ignore local machine state and generated runtime output.
+
+# -----------------------------------------------------------------------------
+# OS / file explorer
+# -----------------------------------------------------------------------------
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# -----------------------------------------------------------------------------
+# Editors, IDEs, and local agent state
+# -----------------------------------------------------------------------------
+.idea/
+.vscode/
+.claude/settings.local.json
+.superpowers/
+/.baoyu-skills/baoyu-translate/
+*.swp
+*.swo
+*~
+
+# -----------------------------------------------------------------------------
+# Local environment files
+# Keep checked-in example files such as `seckill-sample.env` visible.
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# -----------------------------------------------------------------------------
+# Python environments, caches, and test coverage
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.python-version
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage/
+htmlcov/
+.tox/
+.nox/
+.venv/
+venv/
+env/
+ENV/
+
+# -----------------------------------------------------------------------------
+# Node.js / package-manager state
+# -----------------------------------------------------------------------------
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+.pnp.*
+
+# -----------------------------------------------------------------------------
+# Build and test output
+# -----------------------------------------------------------------------------
+dist/
+build/
+target/
+test-results/
+playwright-report/
+allure-results/
+allure-report/
+
+# -----------------------------------------------------------------------------
+# Logs and transient files
+# -----------------------------------------------------------------------------
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*.sqlite
+*.db
+
+# -----------------------------------------------------------------------------
+# Local temporary directories
+# -----------------------------------------------------------------------------
+/tmp-skill-review-*
+/temp/
+
+# -----------------------------------------------------------------------------
+# QA performance reports
+# Keep report documentation; ignore generated runtime artifacts.
+# -----------------------------------------------------------------------------
+**/reports/*.json
+**/reports/*.log
+**/reports/*.csv
+**/reports/*.html
+!**/reports/README.md
+
+# -----------------------------------------------------------------------------
+# skill-up evaluation runtime artifacts
+# -----------------------------------------------------------------------------
+**/*-workspace/
+/.skill-up-workspaces/
+/archive/
+/output.json
+/pytest_html_report.html
+
+# -----------------------------------------------------------------------------
+# Packaged archives
+# -----------------------------------------------------------------------------
+*.zip
+*.tar
+*.gz
+*.7z

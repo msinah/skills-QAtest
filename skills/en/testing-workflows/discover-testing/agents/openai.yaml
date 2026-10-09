@@ -1,0 +1,9 @@
+version: 1
+metadata:
+  key: "discover-testing"
+interface:
+  display_name: "Testing Skill Discovery"
+  short_description: "Use this skill when you need to route a request to the right testing skill before execution; triggers include discover testing, testing skill router, and which…"
+  default_prompt: "Use the discover-testing skill to route this request to the right testing skill and return practical next steps."
+policy:
+  allow_implicit_invocation: true
