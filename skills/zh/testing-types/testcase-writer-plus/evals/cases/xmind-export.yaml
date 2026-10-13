@@ -1,0 +1,25 @@
+id: xmind-export
+title: 增强版输出可编辑 XMind
+description: XMind 树保留风险分组、结构化用例字段、追踪矩阵，并使用随 Skill 分发的模板。
+
+input:
+  prompt: |
+    请用 testcase-writer-plus 基于需求和分析结论设计用例，并交付可编辑的 .xmind 文件。
+    我没有提供模板。使用 Skill 自带模板，保留 P0-P3 风险分组、每条用例的 Trace 和追踪矩阵，并遵循团队自定义字段顺序。
+
+expect:
+  must_contain:
+    - ".xmind"
+    - "追踪矩阵"
+    - "自带模板"
+  must_not_contain:
+    - ".xmind.md"
+    - "只提供 Markdown"
+
+judge:
+  type: rule_based
+  success:
+    - output_contains:
+        all:
+          - "优先级"
+          - "客户端"

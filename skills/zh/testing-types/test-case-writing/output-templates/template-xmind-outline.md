@@ -1,4 +1,4 @@
-# QA 输出脑图
+# QA 输出脑图大纲（Markdown；不是原生 XMind 文件）
 
 - QA 输出
   - 元信息

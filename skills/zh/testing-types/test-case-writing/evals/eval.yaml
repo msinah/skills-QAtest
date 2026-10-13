@@ -20,6 +20,7 @@ cases:
     - evals/cases/edge-incomplete-input.yaml
     - evals/cases/edge-role-source-deduplication.yaml
     - evals/cases/edge-risk-priority.yaml
+    - evals/cases/xmind-export.yaml
   defaults:
     timeout_seconds: 180
     max_turns: 8

@@ -33,6 +33,7 @@ Write clear, executable test cases that cover the real business and quality risk
 - **Requirement traceability**: every case has `Trace`, preferring supplied requirement, story, acceptance, or risk IDs. If no ID exists, create a stable short label and state its source; never use vague "see requirements" trace.
 - **Direct-input compatibility**: with no role candidates, retain the original direct-authoring behavior and use `source_role: [direct_input]` rather than guessing a role.
 - Do not infer amounts, status codes, API paths, time limits, concurrency counts, or other product rules absent from role candidates; put unknowns under assumptions/gaps.
+- Keep Markdown as the default. Only when an editable XMind file is explicitly requested, retain this prompt's case fields and coverage requirements; map any user-provided field names/order/grouping to `fields` and `groups`, then run the exporter with this Skill's bundled template as described in `references/xmind-export.md`. Do not deliver a Markdown outline or renamed ZIP as `.xmind`.
 
 ## Minimum Coverage Checklist
 

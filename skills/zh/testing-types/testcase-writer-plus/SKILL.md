@@ -29,6 +29,7 @@ description: Use this skill when you need high-quality test cases from requireme
 ## 按需加载
 
 - 产出前必须阅读并遵循 `prompts/testcase-writer-plus.md`（最低覆盖清单、输出结构、质量要求）。
+- 用户明确指定 `.xmind` 时：读 `references/xmind-export.md`，按用户/团队字段格式整理用例，并保留优先级分组、追踪矩阵和假设；运行 `scripts/export_xmind.py` 时默认使用本 Skill 自带的脱敏空白模板，无需额外安装依赖或索取模板。未指定格式时保持默认 Markdown，不生成其他文件。
 - 需要套用现成模板时：读 `output-templates/` 中匹配的模板，不要自创冲突结构。
 - 用户要示例或对标现有资产时：读 `examples/` 中相关样例。
 - 需要框架规范、排障、报告 schema 等深资料时：只读 `references/` 里与当前问题相关的文件，不要整目录通读。
@@ -43,6 +44,7 @@ description: Use this skill when you need high-quality test cases from requireme
 - [ ] 高风险项有明确优先级
 - [ ] 未编造用户未提供的细节
 - [ ] 假设与信息缺口已标明
+- [ ] 请求 XMind 时交付的是 `.xmind` 包；结构预检不冒充目标客户端验收
 
 ## 常见误区
 

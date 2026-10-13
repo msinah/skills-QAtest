@@ -38,6 +38,7 @@ Users may provide (more sources → stronger fit for this skill):
 - Rank by business impact × failure likelihood; do not split one behavior into near-duplicate cases.
 - Each case must be independently executable: preconditions, data, steps, and decidable expected results.
 - Do not invent field names, error codes, or API paths the user did not provide; mark unknowns as TBD with assumptions.
+- Keep Markdown as the default. Only when an editable XMind file is explicitly requested, retain this prompt's multi-source conflict notes, risk priorities, complete case fields, and traceability matrix; map user-provided field names/order/grouping to `fields` and `groups`, then run the exporter with this Skill's bundled template as described in `references/xmind-export.md`. Do not deliver a Markdown outline or renamed ZIP as `.xmind`.
 - On multi-source conflict: state “Source A says… / Source B says…”, cover the disputed point or mark it blocking clarification.
 - Default to Markdown tables/lists; switch only when the user asks for Excel/CSV/etc.
 

@@ -30,7 +30,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description='Batch convert all template files into target formats.')
     parser.add_argument('--templates-dir', type=Path, default=Path('output-templates'))
     parser.add_argument('--artifacts-dir', type=Path, default=Path('artifacts'))
-    parser.add_argument('--targets', default='word,excel,xmind,json,csv,markdown', help='comma-separated target formats')
+    parser.add_argument('--targets', default='word,excel,xmind-outline,json,csv,markdown', help='comma-separated target formats')
     parser.add_argument('--skip-same', action='store_true', help='skip conversion when source format equals target format')
     args = parser.parse_args()
 
@@ -60,7 +60,7 @@ def main() -> None:
                 'excel': '.tsv',
                 'markdown': '.md',
                 'word': '.word.md',
-                'xmind': '.xmind.md',
+                'xmind-outline': '.xmind-outline.md',
             }[to_fmt]
             out = artifacts_dir / f"{src.stem}.to-{to_fmt}{out_ext}"
             total += 1

@@ -1,0 +1,25 @@
+id: xmind-export
+title: Plus skill editable XMind output
+description: Preserve risk groups, structured fields, and traceability using the bundled XMind template.
+
+input:
+  prompt: |
+    Use testcase-writer-plus to design cases from requirements and analysis and deliver an editable .xmind file.
+    I did not provide a template. Use the bundled template and preserve P0-P3 risk groups, each case Trace, and the traceability matrix in my team's requested field order.
+
+expect:
+  must_contain:
+    - ".xmind"
+    - "traceability matrix"
+    - "template"
+  must_not_contain:
+    - ".xmind.md"
+    - "Markdown only"
+
+judge:
+  type: rule_based
+  success:
+    - output_contains:
+        all:
+          - "priority"
+          - "client"

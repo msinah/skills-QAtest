@@ -1,0 +1,25 @@
+id: xmind-export
+title: 输出可编辑 XMind 文件流程
+description: 请求 XMind 输出时使用随 Skill 分发的模板和导出脚本，不把 Markdown 大纲冒充为 XMind 文件。
+
+input:
+  prompt: |
+    请用 test-case-writing 为登录功能设计用例，并交付可编辑的 .xmind 文件。
+    我没有提供模板。使用 Skill 自带模板，保留用例 ID、优先级、前置条件、步骤、预期结果和需求追踪，并按团队要求的字段顺序输出。
+
+expect:
+  must_contain:
+    - ".xmind"
+    - "自带模板"
+    - "可编辑"
+  must_not_contain:
+    - ".xmind.md"
+    - "只提供 Markdown"
+
+judge:
+  type: rule_based
+  success:
+    - output_contains:
+        all:
+          - "需求追踪"
+          - "客户端"

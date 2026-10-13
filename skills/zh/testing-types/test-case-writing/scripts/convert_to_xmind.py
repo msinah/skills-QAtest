@@ -2,6 +2,6 @@
 import os
 import subprocess
 import sys
-LOCAL = os.path.normpath(os.path.join(os.path.dirname(__file__), 'convert_formats.py'))
+LOCAL = os.path.normpath(os.path.join(os.path.dirname(__file__), 'export_xmind.py'))
 if __name__ == '__main__':
-    raise SystemExit(subprocess.call([sys.executable, LOCAL, '--to', 'xmind'] + sys.argv[1:]))
+    raise SystemExit(subprocess.call([sys.executable, LOCAL] + sys.argv[1:]))

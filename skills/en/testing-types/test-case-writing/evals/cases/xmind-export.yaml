@@ -1,0 +1,25 @@
+id: xmind-export
+title: Editable XMind output workflow
+description: Use the bundled template and exporter when XMind is requested; do not present a Markdown outline as an XMind file.
+
+input:
+  prompt: |
+    Use test-case-writing to design login cases and deliver an editable .xmind file.
+    I did not provide a template. Use the bundled template and preserve case IDs, priorities, preconditions, steps, expected results, and requirement traceability in my team's requested field order.
+
+expect:
+  must_contain:
+    - ".xmind"
+    - "template"
+    - "editable"
+  must_not_contain:
+    - ".xmind.md"
+    - "Markdown only"
+
+judge:
+  type: rule_based
+  success:
+    - output_contains:
+        all:
+          - "trace"
+          - "client"

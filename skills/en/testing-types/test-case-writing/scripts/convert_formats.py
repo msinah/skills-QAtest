@@ -221,7 +221,7 @@ def default_output(input_path: Path, to_fmt: str) -> Path:
         "excel": ".tsv",
         "markdown": ".md",
         "word": ".word.md",
-        "xmind": ".xmind.md",
+        "xmind-outline": ".xmind-outline.md",
     }[to_fmt]
     return input_path.with_name(input_path.stem + ".converted" + ext)
 
@@ -230,7 +230,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Convert QA output files between common formats")
     parser.add_argument("input", type=Path, help="Input file path")
     parser.add_argument("--from", dest="from_fmt", default="auto", choices=["auto", "word", "excel", "xmind", "json", "csv", "markdown"])
-    parser.add_argument("--to", required=True, choices=["word", "excel", "xmind", "json", "csv", "markdown"])
+    parser.add_argument("--to", required=True, choices=["word", "excel", "xmind-outline", "json", "csv", "markdown"])
     parser.add_argument("--output", type=Path, help="Output file path")
     args = parser.parse_args()
 
@@ -265,7 +265,7 @@ def main() -> None:
         write_markdown(model, output)
     elif args.to == "word":
         write_word_md(model, output)
-    else:
+    elif args.to == "xmind-outline":
         write_xmind_md(model, output)
 
     print(str(output))

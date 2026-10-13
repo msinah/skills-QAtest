@@ -1,4 +1,4 @@
-# QA Output Mindmap
+# QA Output Mindmap Outline (Markdown; not a native XMind file)
 
 - QA Output
   - Meta
