@@ -1,0 +1,26 @@
+id: xmind-test-points
+title: Export a concise test-point XMind
+description: Select the test-points layout only when the user explicitly requests a concise test-point mind map.
+
+input:
+  prompt: |
+    Use test-case-writing to design complete coverage for login, but deliver a concise test-point XMind.
+    The main tree should contain only modules, test points, steps, and expected results. Hide case IDs, traceability, and assumptions.
+
+expect:
+  must_contain:
+    - "test-points"
+    - "module"
+    - "test point"
+    - "steps"
+    - "expected results"
+  must_not_contain:
+    - "change the default to XMind"
+
+judge:
+  type: rule_based
+  success:
+    - output_contains:
+        all:
+          - ".xmind"
+          - "client"

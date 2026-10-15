@@ -39,7 +39,7 @@ description: Use this skill when you need to create high-quality test cases with
 
 - Before producing output, read and follow `prompts/test-case-writing.md` (minimum coverage, output structure, quality bar).
 - When Excel/CSV/JSON/Word/XMind is requested: read `output-formats.md` and honor the format.
-- Only when `.xmind` is explicitly requested: read `references/xmind-export.md`, shape cases to the user's/team's requested fields, and run `scripts/export_xmind.py`. A sanitized blank template is bundled with this Skill; no extra dependency or template request is needed. If no format is specified, keep the default Markdown output and do not generate another file.
+- Only when `.xmind` is explicitly requested: read `references/xmind-export.md`, shape cases to the user's/team's requested fields, and run `scripts/export_xmind.py`. Use the `test-points` layout when the user asks for a concise test-point XMind or equivalent; ordinary XMind requests keep the `detailed` layout. A sanitized blank template is bundled with this Skill; no extra dependency or template request is needed. If no format is specified, keep the default Markdown output and do not generate another file.
 - When a ready-made template fits: use matching files under `output-templates/`.
 - For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.
 - For format conversion or helper checks: prefer existing `scripts/` over reinventing.

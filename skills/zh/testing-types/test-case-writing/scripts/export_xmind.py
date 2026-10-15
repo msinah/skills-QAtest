@@ -53,10 +53,15 @@ def _topic(title: str, children: list[dict[str, Any]] | None = None) -> dict[str
     return node
 
 
-def _case_topic(case: dict[str, Any], language: str, field_specs: list[dict[str, str]] | None) -> dict[str, Any]:
+def _case_topic(
+    case: dict[str, Any],
+    language: str,
+    field_specs: list[dict[str, str]] | None,
+    layout: str,
+) -> dict[str, Any]:
     title = _text(_field(case, ("title",))) or "Untitled test case"
     case_id = _text(_field(case, ("case_id", "id")))
-    if case_id:
+    if case_id and layout == "detailed":
         title = f"{case_id} | {title}"
     aliases_by_key = dict(FIELDS)
     default_labels = {
@@ -64,10 +69,18 @@ def _case_topic(case: dict[str, Any], language: str, field_specs: list[dict[str,
         "source_role": "来源角色", "preconditions": "前置条件", "test_data": "测试数据",
         "steps": "测试步骤", "expected_result": "预期结果", "notes": "备注",
     }
-    specs = field_specs or [
-        {"key": aliases[0], "label": (label if language == "en" else default_labels.get(aliases[0], label))}
-        for label, aliases in FIELDS
-    ]
+    if field_specs is not None:
+        specs = field_specs
+    elif layout == "test-points":
+        specs = [
+            {"key": "steps", "label": "Steps" if language == "en" else "操作步骤"},
+            {"key": "expected_result", "label": "Expected result" if language == "en" else "预期结果"},
+        ]
+    else:
+        specs = [
+            {"key": aliases[0], "label": (label if language == "en" else default_labels.get(aliases[0], label))}
+            for label, aliases in FIELDS
+        ]
     details = []
     for spec in specs:
         key = spec["key"]
@@ -92,7 +105,27 @@ def _case_groups(payload: dict[str, Any], language: str) -> list[dict[str, Any]]
         raise ValueError("Input JSON must contain a non-empty 'cases' array.")
     explicit_groups = payload.get("groups")
     if isinstance(explicit_groups, list) and explicit_groups:
-        groups = explicit_groups
+        case_by_id = {
+            _text(_field(case, ("case_id", "id"))): case
+            for case in cases
+            if isinstance(case, dict) and _text(_field(case, ("case_id", "id")))
+        }
+        groups = []
+        for group in explicit_groups:
+            if not isinstance(group, dict):
+                raise ValueError("Each item in 'groups' must be an object.")
+            group_cases = group.get("cases")
+            if group_cases is None and "case_ids" in group:
+                case_ids = group["case_ids"]
+                if not isinstance(case_ids, list):
+                    raise ValueError("'case_ids' in a group must be an array.")
+                missing = [case_id for case_id in case_ids if _text(case_id) not in case_by_id]
+                if missing:
+                    raise ValueError(f"Unknown case IDs in group: {', '.join(_text(item) for item in missing)}")
+                group_cases = [case_by_id[_text(case_id)] for case_id in case_ids]
+            if not isinstance(group_cases, list):
+                raise ValueError("Each group must contain a 'cases' or 'case_ids' array.")
+            groups.append({"title": group.get("title"), "cases": group_cases})
     else:
         priorities = ("P0", "P1", "P2", "P3", "Unprioritized")
         by_priority: dict[str, list[dict[str, Any]]] = {key: [] for key in priorities}
@@ -114,10 +147,13 @@ def _case_groups(payload: dict[str, Any], language: str) -> list[dict[str, Any]]
         or any(not isinstance(item, dict) or not isinstance(item.get("key"), str) for item in field_specs)
     ):
         raise ValueError("'fields' must be an ordered array of objects with a string 'key'.")
+    layout = payload.get("layout", "detailed")
+    if layout not in ("detailed", "test-points"):
+        raise ValueError("'layout' must be either 'detailed' or 'test-points'.")
     return [
         _topic(
             _text(group.get("title")) or labels["Cases"],
-            [_case_topic(case, language, field_specs) for case in group.get("cases", [])],
+            [_case_topic(case, language, field_specs, layout) for case in group.get("cases", [])],
         )
         for group in groups
     ]
@@ -132,7 +168,11 @@ def _content_tree(payload: dict[str, Any], template_content: bytes, language: st
         raise ValueError("The first template Sheet must contain a rootTopic object.")
 
     branches = _case_groups(payload, language)
-    if payload.get("traceability"):
+    layout = payload.get("layout", "detailed")
+    include_supporting = payload.get("include_supporting_sections", layout == "detailed")
+    if not isinstance(include_supporting, bool):
+        raise ValueError("'include_supporting_sections' must be a boolean.")
+    if include_supporting and payload.get("traceability"):
         links = []
         for item in payload["traceability"]:
             if isinstance(item, dict):
@@ -144,7 +184,7 @@ def _content_tree(payload: dict[str, Any], template_content: bytes, language: st
             else:
                 links.append(_topic(_text(item)))
         branches.append(_topic("追踪矩阵" if language == "zh" else "Traceability matrix", links))
-    if payload.get("assumptions"):
+    if include_supporting and payload.get("assumptions"):
         assumptions = payload["assumptions"]
         if not isinstance(assumptions, list):
             assumptions = [assumptions]

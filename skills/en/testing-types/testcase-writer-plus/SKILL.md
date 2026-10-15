@@ -29,7 +29,7 @@ description: Use this skill when you need high-quality test cases from requireme
 ## Progressive Disclosure
 
 - Before producing output, read and follow `prompts/testcase-writer-plus.md` (minimum coverage, output structure, quality bar).
-- Only when `.xmind` is explicitly requested: read `references/xmind-export.md`, shape cases to the user's/team's requested fields while retaining priority groups, traceability, and assumptions, then run `scripts/export_xmind.py`. A sanitized blank template is bundled with this Skill; no extra dependency or template request is needed. If no format is specified, keep the default Markdown output and do not generate another file.
+- Only when `.xmind` is explicitly requested: read `references/xmind-export.md`, shape cases to the user's/team's requested fields, and run `scripts/export_xmind.py`. Ordinary requests use the `detailed` layout with priority groups, traceability, and assumptions; when the user asks for a concise test-point XMind or equivalent, use the `test-points` layout so the main tree expands only module, test point, steps, and expected results. A sanitized blank template is bundled with this Skill; no extra dependency or template request is needed. If no format is specified, keep the default Markdown output and do not generate another file.
 - When a ready-made template fits: use matching files under `output-templates/`.
 - When the user wants examples or alignment with existing assets: read relevant `examples/`.
 - For deep framework/troubleshoot/schema notes: read only the relevant file(s) under `references/`, do not load the whole directory.

@@ -1,0 +1,26 @@
+id: xmind-test-points
+title: Export a Plus concise test-point XMind
+description: Preserve Plus coverage design while compressing the XMind presentation to modules and test points.
+
+input:
+  prompt: |
+    Use testcase-writer-plus to design complete cases from requirements and risk analysis, then deliver a concise test-point XMind.
+    Show only modules, test points, steps, and expected results in the main tree. Keep traceability in the source data, but do not append traceability or assumptions to this map.
+
+expect:
+  must_contain:
+    - "test-points"
+    - "module"
+    - "test point"
+    - "steps"
+    - "expected results"
+  must_not_contain:
+    - "change the default to XMind"
+
+judge:
+  type: rule_based
+  success:
+    - output_contains:
+        all:
+          - ".xmind"
+          - "client"

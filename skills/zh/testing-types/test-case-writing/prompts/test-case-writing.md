@@ -33,7 +33,7 @@
 - **需求追踪**：每条用例必须有 `Trace`，优先使用用户提供的需求、故事、验收标准或风险 ID；没有 ID 时建立稳定短标签并声明来源，不得写成模糊的「见需求」。
 - **直接输入兼容**：没有角色候选时仍按原有方式编写；`source_role` 写为 `direct_input`，不要擅自猜测角色。
 - 不得从角色候选推断未提供的金额、状态码、接口路径、时限、并发次数或其他产品规则；未知处写入假设/缺口。
-- 默认仍输出 Markdown；用户明确要求可编辑 XMind 文件时，保留本 Prompt 的用例字段和覆盖要求。按用户给定的字段名/顺序/分组映射 `fields` 与 `groups`，使用 `references/xmind-export.md` 和随 Skill 提供的模板运行导出脚本；不得把 Markdown 大纲或改名 ZIP 交付为 `.xmind`。
+- 默认仍输出 Markdown；用户明确要求可编辑 XMind 文件时，保留本 Prompt 的用例设计和覆盖要求。普通 XMind 使用 `detailed`；用户要求“测试点简约版 XMind”等简约脑图时使用 `test-points`，主树只展示模块、测试点、操作步骤和预期结果，不因简约展示而减少设计覆盖。按用户给定的字段名/顺序/分组映射 `fields` 与 `groups`，使用 `references/xmind-export.md` 和随 Skill 提供的模板运行导出脚本；不得把 Markdown 大纲或改名 ZIP 交付为 `.xmind`。
 
 ## 最低覆盖清单
 

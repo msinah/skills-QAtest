@@ -1,0 +1,26 @@
+id: xmind-test-points
+title: 增强版输出测试点简约版 XMind
+description: 保持增强版覆盖设计，仅将 XMind 展示压缩为模块和测试点结构。
+
+input:
+  prompt: |
+    请用 testcase-writer-plus 基于需求和风险分析设计完整用例，并按测试点简约版 XMind 输出。
+    主树只展示模块、测试点、操作步骤和预期结果；追踪设计保留在生成数据中，但本次不要在脑图中附加追踪矩阵和假设。
+
+expect:
+  must_contain:
+    - "test-points"
+    - "模块"
+    - "测试点"
+    - "操作步骤"
+    - "预期结果"
+  must_not_contain:
+    - "默认改为 XMind"
+
+judge:
+  type: rule_based
+  success:
+    - output_contains:
+        all:
+          - ".xmind"
+          - "客户端"

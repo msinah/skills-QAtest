@@ -2,6 +2,12 @@
 
 Export only when the user explicitly requests `.xmind`; otherwise retain the Skill's default Markdown output. Finish and review the cases first, serialize the JSON input, and run this Skill's `scripts/export_xmind.py`. The script, blank template, and standard-library-only implementation ship with this Skill.
 
+## Layout Selection
+
+- `detailed`: the default. Show full case fields and include traceability and assumptions by default.
+- `test-points`: use when the user requests a concise test-point XMind or equivalent. The main tree is “module → test point → steps / expected results”; the test-point title omits the case ID. Keep the complete designed case data in JSON and do not reduce coverage merely to shorten presentation.
+- The concise layout hides traceability and assumptions by default. Set `"include_supporting_sections": true` when they should appear, or use `fields` to override the concise layout's default fields.
+
 ## Template Requirements
 
 - By default, use the sanitized team template at `output-templates/template-xmind.xmind`.
@@ -45,6 +51,28 @@ Export only when the user explicitly requests `.xmind`; otherwise retain the Ski
 ```
 
 `cases` is required and non-empty. `fields`, `traceability`, and `assumptions` are optional. Map a requested team schema to `fields` and use `groups` for custom names/order, for example `[{"title":"Login success","cases":[...]}]`; otherwise the exporter uses built-in fields and P0/P1/P2/P3 grouping. Each step becomes a child topic. Never invent missing case details.
+
+For a concise test-point map, group by IDs from the top-level cases to avoid duplicating case objects:
+
+```json
+{
+  "title": "Order test points",
+  "layout": "test-points",
+  "cases": [
+    {
+      "case_id": "TC-001",
+      "title": "Submit an order successfully",
+      "steps": ["Open the order page", "Submit the order"],
+      "expected_result": ["Order is created"]
+    }
+  ],
+  "groups": [
+    {"title": "Order submission", "case_ids": ["TC-001"]}
+  ]
+}
+```
+
+Every ID in `groups[].case_ids` must exist in top-level `cases`. Inline case objects under `groups[].cases` remain supported.
 
 ## Run and Acceptance
 

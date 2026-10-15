@@ -1,0 +1,26 @@
+id: xmind-test-points
+title: 输出测试点简约版 XMind
+description: 用户明确要求简约测试点脑图时选择 test-points 布局，不改变默认输出模式。
+
+input:
+  prompt: |
+    请用 test-case-writing 为登录功能设计完整覆盖的用例，但交付时按测试点简约版 XMind 输出。
+    脑图主树只要模块、测试点、操作步骤和预期结果，不显示用例 ID、追踪矩阵和假设。
+
+expect:
+  must_contain:
+    - "test-points"
+    - "模块"
+    - "测试点"
+    - "操作步骤"
+    - "预期结果"
+  must_not_contain:
+    - "默认改为 XMind"
+
+judge:
+  type: rule_based
+  success:
+    - output_contains:
+        all:
+          - ".xmind"
+          - "客户端"

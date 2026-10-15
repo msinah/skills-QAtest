@@ -6,5 +6,6 @@
 - **CSV**：在末尾加「请以 CSV 格式（逗号分隔，首行为表头）输出」。
 - **JSON**：在末尾加「请以 JSON 形式输出」。
 - **可编辑 XMind**：在末尾加「请交付可编辑的 `.xmind` 文件」，并提供同事要求的字段/分组/排序格式（或示例文件）。按 `references/xmind-export.md` 调用 `scripts/export_xmind.py`；Skill 已附带空白模板。脚本生成的文件仍需在目标客户端打开验证。
+- **测试点简约版 XMind**：在末尾加「请按测试点简约版 XMind 输出」。导出时使用 `layout: "test-points"`，主树只展示模块、测试点、操作步骤和预期结果；未指定时不启用此布局。
 
 详见仓库 `skills/testing-types/_output-formats-template-zh.md`。

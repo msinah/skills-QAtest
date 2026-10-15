@@ -20,6 +20,7 @@ cases:
     - evals/cases/edge-incomplete-input.yaml
     - evals/cases/edge-risk-priority.yaml
     - evals/cases/xmind-export.yaml
+    - evals/cases/xmind-test-points.yaml
   defaults:
     timeout_seconds: 180
     max_turns: 8

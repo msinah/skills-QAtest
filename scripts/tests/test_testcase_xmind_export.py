@@ -148,6 +148,83 @@ class TestcaseXmindExportTest(unittest.TestCase):
             exporter.main()
         self.assertTrue(output.is_file())
 
+    def test_test_points_layout_is_compact_and_keeps_case_data_available(self):
+        self.payload["layout"] = "test-points"
+        self.payload["groups"] = [{"title": "Checkout", "case_ids": ["TC-001"]}]
+        self.input_path.write_text(json.dumps(self.payload), encoding="utf-8")
+
+        for index, path in enumerate(EXPORTERS):
+            with self.subTest(path=path):
+                exporter = load_exporter(path, index + 40)
+                output = self.directory / f"test-points-{index}.xmind"
+                language = "zh" if index % 2 == 0 else "en"
+                exporter.export(self.input_path, exporter.DEFAULT_TEMPLATE, output, language)
+
+                with zipfile.ZipFile(output) as archive:
+                    sheets = json.loads(archive.read("content.json"))
+
+                branches = sheets[0]["rootTopic"]["children"]["attached"]
+                self.assertEqual([branch["title"] for branch in branches], ["Checkout"])
+                case = branches[0]["children"]["attached"][0]
+                self.assertEqual(case["title"], "Submit order")
+                details = case["children"]["attached"]
+                expected_labels = ["操作步骤", "预期结果"] if language == "zh" else ["Steps", "Expected result"]
+                self.assertEqual([detail["title"].split(":", 1)[0] for detail in details], expected_labels)
+                serialized = json.dumps(details, ensure_ascii=False)
+                self.assertIn("Open page", serialized)
+                self.assertIn("Order is created", serialized)
+                self.assertNotIn("REQ-1", json.dumps(branches, ensure_ascii=False))
+
+    def test_test_points_layout_can_include_supporting_sections(self):
+        self.payload["layout"] = "test-points"
+        self.payload["include_supporting_sections"] = True
+        self.input_path.write_text(json.dumps(self.payload), encoding="utf-8")
+        exporter = load_exporter(EXPORTERS[0], 50)
+        output = self.directory / "test-points-supporting.xmind"
+        exporter.export(self.input_path, exporter.DEFAULT_TEMPLATE, output, "zh")
+        with zipfile.ZipFile(output) as archive:
+            sheets = json.loads(archive.read("content.json"))
+        titles = [topic["title"] for topic in sheets[0]["rootTopic"]["children"]["attached"]]
+        self.assertIn("追踪矩阵", titles)
+        self.assertIn("假设与缺口", titles)
+
+    def test_unknown_layout_is_rejected(self):
+        self.payload["layout"] = "unknown"
+        self.input_path.write_text(json.dumps(self.payload), encoding="utf-8")
+        exporter = load_exporter(EXPORTERS[0], 60)
+        with self.assertRaises(ValueError):
+            exporter.export(
+                self.input_path,
+                exporter.DEFAULT_TEMPLATE,
+                self.directory / "unknown-layout.xmind",
+                "zh",
+            )
+
+    def test_unknown_case_id_in_group_is_rejected(self):
+        self.payload["groups"] = [{"title": "Checkout", "case_ids": ["TC-404"]}]
+        self.input_path.write_text(json.dumps(self.payload), encoding="utf-8")
+        exporter = load_exporter(EXPORTERS[0], 70)
+        with self.assertRaisesRegex(ValueError, "TC-404"):
+            exporter.export(
+                self.input_path,
+                exporter.DEFAULT_TEMPLATE,
+                self.directory / "unknown-case-id.xmind",
+                "zh",
+            )
+
+    def test_supporting_sections_flag_must_be_boolean(self):
+        self.payload["layout"] = "test-points"
+        self.payload["include_supporting_sections"] = "false"
+        self.input_path.write_text(json.dumps(self.payload), encoding="utf-8")
+        exporter = load_exporter(EXPORTERS[0], 80)
+        with self.assertRaises(ValueError):
+            exporter.export(
+                self.input_path,
+                exporter.DEFAULT_TEMPLATE,
+                self.directory / "invalid-supporting-flag.xmind",
+                "zh",
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

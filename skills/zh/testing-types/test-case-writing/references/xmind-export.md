@@ -2,6 +2,12 @@
 
 只有用户明确要求 `.xmind` 时才执行导出；未指定时保持本 Skill 的 Markdown 默认输出。先完成用例设计和自检，再生成 JSON 临时输入并运行本 Skill 自带的 `scripts/export_xmind.py`。脚本、空白模板和标准库依赖均随 Skill 一起分发。
 
+## 布局选择
+
+- `detailed`：默认值。展示完整用例字段，并默认附带追踪矩阵和假设。
+- `test-points`：用户要求“测试点简约版 XMind”、简约脑图或类似表达时使用。主树为“模块 → 测试点 → 操作步骤 / 预期结果”，测试点标题不显示用例 ID；用例数据仍保留在 JSON 中，不得因简约展示减少覆盖。
+- 简约版默认不展示追踪矩阵和假设。需要时设置 `"include_supporting_sections": true`；也可用 `fields` 覆盖简约版默认字段。
+
 ## 模板要求
 
 - 默认使用 `output-templates/template-xmind.xmind`，该模板由团队 XMind 样例脱敏后随 Skill 提供。
@@ -45,6 +51,28 @@
 ```
 
 `cases` 必须非空。`fields` 可选；省略时使用内置字段。用户给出团队格式时，将字段名/顺序映射到 `fields`，并按要求用 `groups` 定义分组，例如 `[{"title":"登录成功","cases":[...]}]`；否则按 P0、P1、P2、P3 分组。步骤会逐项成为子主题。缺失字段不得编造。
+
+简约测试点模式推荐复用顶层用例 ID 分组，避免重复整段用例：
+
+```json
+{
+  "title": "订单测试点",
+  "layout": "test-points",
+  "cases": [
+    {
+      "case_id": "TC-001",
+      "title": "成功提交订单",
+      "steps": ["打开订单页", "提交订单"],
+      "expected_result": ["订单创建成功"]
+    }
+  ],
+  "groups": [
+    {"title": "订单提交", "case_ids": ["TC-001"]}
+  ]
+}
+```
+
+`groups[].case_ids` 中的 ID 必须存在于顶层 `cases`。也可继续在 `groups[].cases` 中直接提供用例对象。
 
 ## 调用与验收
 
